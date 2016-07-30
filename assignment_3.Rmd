@@ -1,0 +1,53 @@
+---
+title: "Assignment-3"
+author: "Harkirat"
+date: "July 30, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+### This task is to is to study the dataset and the associated description of the data (i.e. "data dictionary"). A dataframe is created with a subset of the columns in the dataset. Column that indicates edible or poisonous and three or four other columns are included. Meaningful column names have been given and als the abbreviations used in the data are replaced -for example, in the "Eatable" column, "e" become "edible and "p" becomes poisonous." 
+
+
+```{r}
+#install.packages("RCurl")
+
+url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/agaricus-lepiota.data"
+
+require(RCurl)
+
+mush_data <- getURL(url)
+
+mush_df <- read.csv(text=mush_data,header=F,sep=",",stringsAsFactors = FALSE)
+mush_df <- mush_df[,c(1,2,3,5)]
+head(mush_df)
+
+mush_df$V1[mush_df$V1=="e"] <- "edible"
+mush_df$V1[mush_df$V1=="p"] <- "poisonous"
+
+mush_df$V2[mush_df$V2=="b"] <- "bell"
+mush_df$V2[mush_df$V2=="c"] <- "conical"
+mush_df$V2[mush_df$V2=="x"] <- "convex"
+mush_df$V2[mush_df$V2=="f"] <- "flat"
+mush_df$V2[mush_df$V2=="k"] <- "knobbed"
+mush_df$V2[mush_df$V2=="s"] <- "sunken"
+
+mush_df$V3[mush_df$V3=="f"] <- "fibrous"
+mush_df$V3[mush_df$V3=="g"] <- "grooves"
+mush_df$V3[mush_df$V3=="y"] <- "scaly"
+mush_df$V3[mush_df$V3=="s"] <- "smooth"
+
+mush_df$V5[mush_df$V5=="t"] <- "bruises"
+mush_df$V5[mush_df$V5=="f"] <- "no"
+
+colnames(mush_df) <- c("Eatable","cap-shape","cap-surface","bruises?")
+head(mush_df)
+```
+
+
+
