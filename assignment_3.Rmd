@@ -11,13 +11,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-### This task is to is to study the dataset and the associated description of the data (i.e. "data dictionary"). A dataframe is created with a subset of the columns in the dataset. Column that indicates edible or poisonous and three or four other columns are included. Meaningful column names have been given and als the abbreviations used in the data are replaced -for example, in the "Eatable" column, "e" become "edible and "p" becomes poisonous." 
+#### This task is to is to study the dataset and the associated description of the data (i.e. "data dictionary"). A dataframe is created with a subset of the columns in the dataset. Column that indicates edible or poisonous and three or four other columns are included. Meaningful column names have been given and als the abbreviations used in the data are replaced -for example, in the "Eatable" column, "e" become "edible and "p" becomes poisonous. 
+#### There are 2 URLs given. One is the URL taken from UCI website and other from github repo which is commented out. Either of them can be used.
 
 
 ```{r}
 #install.packages("RCurl")
 
 url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/agaricus-lepiota.data"
+
+#url <- "https://raw.githubusercontent.com/GoHarry/R-Assignment-3/master/agaricus-lepiota.data.txt"
 
 require(RCurl)
 
